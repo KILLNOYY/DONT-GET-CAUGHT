@@ -428,7 +428,7 @@ const Audio_ = {
     src.start(t); src.stop(t+(dur||0.2));
   },
   step(kind, pan){
-    const settings = kind==='sprint' ? {volume:0.32, filter:1000} : kind==='sneak' ? {volume:0.07, filter:450} : {volume:0.14, filter:650};
+    const settings = kind==='sprint' ? {volume:0.32, filter:1000} : kind==='sneak' ? {volume:0.12, filter:450} : {volume:0.18, filter:650};
     this.noiseBurst(0.06, settings.volume, settings.filter, pan);
   },
   heartbeat(vol){
