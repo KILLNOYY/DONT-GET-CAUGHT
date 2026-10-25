@@ -100,6 +100,19 @@
   #scream canvas { position:absolute; inset:0; width:100%; height:100%; image-rendering:pixelated; }
   #scream .red { position:absolute; inset:0; background:radial-gradient(circle at 50% 50%, rgba(180,0,0,0.4), rgba(0,0,0,0.9) 70%); animation:screamPulse .15s infinite; pointer-events:none; }
   @keyframes screamPulse { 0%{opacity:.4;} 50%{opacity:.95;} 100%{opacity:.4;} }
+ #death {
+  /* Убедимся, что оверлей занимает весь экран */
+  position: fixed;
+}
+.death-bottom {
+  /* Прижимаем блок с подсказками к низу экрана */
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 </style>
 </head>
 <body>
@@ -155,21 +168,22 @@
   <button class="btn" id="restartBtn2">Заново</button>
 </div>
 
-<div id="death" class="overlay hidden" style="justify-content:space-between; padding-top:15vh; padding-bottom:20px;">
-  <div>
-    <h1>ОН НАШЁЛ ТЕБЯ</h1>
-    <button class="btn" id="retryBtn">Попробовать снова</button>
-  </div>
+<div id="death" class="overlay hidden">
+  <!-- Этот блок будет автоматически отцентрирован благодаря классу .overlay -->
+  <h1>ОН НАШЁЛ ТЕБЯ</h1>
+  <button class="btn" id="retryBtn">Попробовать снова</button>
   
-  <!-- НОВЫЙ БЛОК С ТЕКСТОМ -->
-  <div class="hint" style="margin-top:auto;">
-    Найди <b>три кассеты</b> и выберись из заброшенной студии.<br>
-    Что-то ходит по коридорам. Оно видит и слышит. Не шуми.<br>
-    Рекомендуется играть на ПК и в наушниках.<br>
-    <b>Стрелки</b> — движение · <b>Shift</b> — бег · <b>Ctrl</b> — красться · <b>Esc</b> — пауза<br>
-    На телефоне — джойстик внизу экрана.<br>
-    <span class="tg"><a href="https://t.me/KILLNOYY" target="_blank" rel="noopener">NOYY Telegram</a><br>
-    <a href="https://vk.ru/killnoyy" target="_blank" rel="noopener">NOYY VK</a></span>
+  <!-- Обернули текст в контейнер, чтобы прижать его к низу абсолютным позиционированием -->
+  <div class="death-bottom">
+    <div class="hint" style="margin-top:0;">
+      Найди <b>три кассеты</b> и выберись из заброшенной студии.<br>
+      Что-то ходит по коридорам. Оно видит и слышит. Не шуми.<br>
+      Рекомендуется играть на ПК и в наушниках.<br>
+      <b>Стрелки</b> — движение · <b>Shift</b> — бег · <b>Ctrl</b> — красться · <b>Esc</b> — пауза<br>
+      На телефоне — джойстик внизу экрана.<br>
+      <span class="tg"><a href="https://t.me/KILLNOYY" target="_blank" rel="noopener">NOYY Telegram</a><br>
+      <a href="https://vk.ru/killnoyy" target="_blank" rel="noopener">NOYY VK</a></span>
+    </div>
   </div>
 </div>
 
