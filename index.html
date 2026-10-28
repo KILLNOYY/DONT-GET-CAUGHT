@@ -150,7 +150,7 @@
 <div id="start" class="overlay">
   <h1>NOYY <span>—</span> DON'T GET CAUGHT</h1>
   <div class="sub">ХЭЛЛОУИН · ЗАБРОШЕННАЯ СТУДИЯ</div>
-  <button class="btn" id="startBtn">Начать</button>
+  <button class="btn" id="startBtn">Начать <span style="font-size:0.7em; color:#888; margin-left:8px;">[Enter]</span></button>
   <div class="hint">
     Найди <b>три кассеты</b> и выберись из заброшенной студии.<br>
     Что-то ходит по коридорам. Оно видит и слышит. Не шуми.<br>
@@ -171,7 +171,7 @@
 <div id="death" class="overlay hidden">
   <!-- Этот блок будет автоматически отцентрирован благодаря классу .overlay -->
   <h1>ОН НАШЁЛ ТЕБЯ</h1>
-  <button class="btn" id="retryBtn">Попробовать снова</button>
+  <button class="btn" id="retryBtn">Попробовать снова <span style="font-size:0.7em; color:#888; margin-left:8px;">[Enter]</span></button>
   
   <!-- Обернули текст в контейнер, чтобы прижать его к низу абсолютным позиционированием -->
   <div class="death-bottom">
@@ -2333,6 +2333,25 @@ function bindUI(){
   });
   window.addEventListener('resize',()=>{
     if(screamEl.classList.contains('show')){ screamCv.width=window.innerWidth; screamCv.height=window.innerHeight; }
+  });
+
+  // === ОБРАБОТКА КЛАВИШИ ENTER ===
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      if (state.phase === 'start') {
+        e.preventDefault();
+        startGame();
+      } else if (state.phase === 'dead') {
+        e.preventDefault();
+        startGame();
+      } else if (state.phase === 'win') {
+        e.preventDefault();
+        startGame();
+      } else if (state.phase === 'pause') {
+        e.preventDefault();
+        resumeGame();
+      }
+    }
   });
 }
 
