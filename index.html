@@ -217,9 +217,9 @@ const W = MAPW*TILE, H = MAPH*TILE;
 const BLOCKED_SET = new Set(LEVEL.blocked || [1]);
 
 const DIFFICULTY = {
-  easy:      { chaseSpeed:140, patrolSpeed:40, vision:6, hearMul:0.8, staminaDrain:28, staminaRegen:18, angryBoost:1.10 },
-  normal:    { chaseSpeed:145, patrolSpeed:46, vision:7, hearMul:1.0, staminaDrain:38, staminaRegen:14, angryBoost:1.12 },
-  nightmare: { chaseSpeed:155, patrolSpeed:52, vision:8, hearMul:1.25, staminaDrain:46, staminaRegen:10, angryBoost:1.16 }
+  easy:      { chaseSpeed:70,  patrolSpeed:20, vision:6, hearMul:0.8, staminaDrain:28, staminaRegen:18, angryBoost:1.10 },
+  normal:    { chaseSpeed:72,  patrolSpeed:23, vision:7, hearMul:1.0, staminaDrain:38, staminaRegen:14, angryBoost:1.12 },
+  nightmare: { chaseSpeed:77,  patrolSpeed:26, vision:8, hearMul:1.25, staminaDrain:46, staminaRegen:10, angryBoost:1.16 }
 };
 let currentDiff = 'normal';
 
@@ -719,7 +719,7 @@ function updateMonster(dt, player){
     if(diff<halfCone) sees=true;
   }
 
-  const hearRange = ((m.angry?14:11) * TILE) * d.hearMul;
+  const hearRange = ((m.angry?14:11) * TILE) * d.hearMul / 3; // <-- добавили / 3
   const noiseStrength = state.noise;
   let hears=false;
   if(noiseStrength > 0.08){
